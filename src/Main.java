@@ -23,21 +23,22 @@ public class Main {
                    System.out.println("***************insert new student***************");
                    System.out.print("Enter ID: ");
                    student.setId(scanner.nextInt());
+                   scanner.nextLine();
                    System.out.print("Enter Name: ");
                    student.setName(scanner.nextLine());
-                   scanner.nextLine();
                    System.out.print("Enter Class Name: ");
                    student.setClassName(scanner.nextLine());
                    ostudent.insert(student.getId(),student.getName(),student.getClassName() );
+                   System.out.println("insert Successful...!");
                }
 
                case 2 -> {
                    System.out.println("***************update informention student***************");
                    System.out.print("Enter ID Student that you want to update informention:");
                    student.setId(scanner.nextInt());
+                   scanner.nextLine();
                    System.out.print("New Name: ");
                    student.setName(scanner.nextLine());
-                   scanner.nextLine();
                    System.out.print("New class: ");
                    student.setClassName(scanner.nextLine());
                    ostudent.update(student.getId(), student.getName(), student.getClassName());
@@ -47,6 +48,10 @@ public class Main {
                    System.out.print("Enter ID: ");
                    student.setId(scanner.nextInt());
                    ostudent.delete(student.getId());
+                   System.out.println("delete Successful...!");
+                   System.out.println("Press Key ToContinue ...!");
+                   scanner.nextLine();
+                   scanner.nextLine();
                }
                case 4 -> {
                    System.out.println("***************select informention student by ID ***************");
@@ -57,6 +62,9 @@ public class Main {
                case 5 -> {
                    System.out.println("==================Show Informention All student==================");
                    ostudent.showInformention();
+                   System.out.println("Press Key ToContinue ...!");
+                   scanner.nextLine();
+                   scanner.nextLine();
                }
                case 0 -> {
                    System.out.println("5.exit");

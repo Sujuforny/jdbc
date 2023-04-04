@@ -29,7 +29,7 @@ public class Ostudent implements Operation{
     @Override
     public void insert(Integer id, String name, String className) {
         try(Connection con = ConnectionData.dataSource().getConnection()){
-            String insersql = "INSERT INTO tb_student(id,name,class_name) VALUES (?,?,?)";
+            String insersql = "INSERT INTO tb_student(id, name ,class_name) VALUES (?,?,?)";
             PreparedStatement statement = con.prepareStatement(insersql);
 
             statement.setInt(1,id);
@@ -55,8 +55,10 @@ public class Ostudent implements Operation{
     @Override
     public void update(Integer id ,String name ,String className) {
         try(Connection con = ConnectionData.dataSource().getConnection()){
-            String updatesql = "UPDATE tb_student"+" SET name = "+name+","+" class_name = "+className+" WHERE id = "+id;
+            String updatesql = "UPDATE tb_student"+" SET name =?,class_name=? WHERE id="+id;
             PreparedStatement statement = con.prepareStatement(updatesql);
+            statement.setString(1,name);
+            statement.setString(2,className);
             statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
